@@ -1,11 +1,9 @@
-import type { NextPage } from "next";
-import { useEffect } from "react";
+import type { GetServerSideProps, NextPage } from "next";
 import { Client } from "disconnect";
+import { withPageAuth } from "@vc/utils/auth";
 
-const getIdentity = () => {
-  const accessAuth = JSON.parse(localStorage.getItem("access_auth") as string);
-  console.log("accessAuth: ", accessAuth);
-  const client = new Client(accessAuth);
+const getIdentity = (access: any) => {
+  const client = new Client(access);
 
   return new Promise((resolve, reject) => {
     client
@@ -15,21 +13,21 @@ const getIdentity = () => {
   });
 };
 
-const CallbackPage: NextPage = () => {
-  const fetchIdentity = async () => {
-    try {
-      const identity = await getIdentity();
-      console.log("identity: ", identity);
-    } catch (e) {
-      console.error("e: ", e);
-    }
-  };
-
-  useEffect(() => {
-    fetchIdentity();
-  }, []);
-
-  return <div>Identity</div>;
+const CallbackPage: NextPage<{ identity: any }> = ({ identity }) => {
+  return (
+    <div className="">
+      <h1>Identity</h1>
+      {JSON.stringify(identity)}
+    </div>
+  );
 };
+
+export const getServerSideProps: GetServerSideProps = withPageAuth(
+  async ({ req }) => {
+    const access = req.session.get("access");
+    const identity = await getIdentity(access);
+    return { props: { identity } };
+  }
+);
 
 export default CallbackPage;

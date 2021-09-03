@@ -3,5 +3,6 @@ declare namespace NodeJS {
     DISCOGS_CONSUMER_KEY: string;
     DISCOGS_CONSUMER_SECRET: string;
     NEXT_PUBLIC_APP_URL: string;
+    SECRET_COOKIE_PASSWORD: string;
   }
 }

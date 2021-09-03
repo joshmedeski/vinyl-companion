@@ -5,9 +5,11 @@ const baseURL = process.env.NEXT_PUBLIC_APP_URL + "/api";
 
 const api = axios.create({ baseURL });
 
-export const apiOauthRequestToken = async (): Promise<OAuthCallbackAuth> => {
-  const { data } = await api.get<OAuthCallbackAuth>("/oauth/request_token");
-  localStorage.setItem("request_auth", JSON.stringify(data));
+/**
+ * @returns the Discogs Oauth authorize URl
+ */
+export const apiOauthRequestToken = async (): Promise<string> => {
+  const { data } = await api.get<string>("/oauth/request_token");
   return data;
 };
 
