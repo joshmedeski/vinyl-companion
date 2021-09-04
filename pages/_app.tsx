@@ -10,7 +10,7 @@ function VinylCompanionApp({ Component, pageProps }: AppProps) {
   return (
     <OfflineDbProvider>
       <DiscogsProvider>
-        <main className="min-h-screen">
+        <main className="min-h-screen pb-20">
           <Component {...pageProps} />
         </main>
         <Footer />

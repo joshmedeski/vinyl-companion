@@ -1,3 +1,5 @@
+const colors = require("tailwindcss/colors");
+
 module.exports = {
   mode: "jit",
   purge: ["./**/*.tsx"],
@@ -5,6 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        primary: colors.emerald,
         discogs: {
           DEFAULT: "#333333",
         },
