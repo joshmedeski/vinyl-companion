@@ -3,11 +3,11 @@ const colors = require("tailwindcss/colors");
 module.exports = {
   mode: "jit",
   purge: ["./**/*.tsx"],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "media",
   theme: {
     extend: {
       colors: {
-        primary: colors.emerald,
+        primary: colors.rose,
         discogs: {
           DEFAULT: "#333333",
         },

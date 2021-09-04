@@ -26,7 +26,7 @@ const ContextualRelease: React.FC<{ index: number; isActive?: boolean }> = ({
     <div
       className={classNames([
         "grid col-span-4 grid-cols-4 row-start-1 place-items-center",
-        { "bg-gray-100": isActive },
+        { "bg-primary-50 dark:bg-primary-900": isActive },
       ])}
     >
       <Image
@@ -36,7 +36,7 @@ const ContextualRelease: React.FC<{ index: number; isActive?: boolean }> = ({
         alt="album artwork"
       />
       <div className="col-span-3 w-full p-4">
-        <h3 className="font-semibold leading-none text-xl mb-1">
+        <h3 className="font-extrabold leading-none text-3xl mb-1 tracking-wide">
           {release.basic_information.artists[0].name}
         </h3>
         <p className="leading-none text-sm">
@@ -85,7 +85,7 @@ const CollectionSortPosition: React.FC<{}> = () => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+              <Dialog.Overlay className="fixed inset-0 bg-opacity-90 transition-opacity" />
             </Transition.Child>
 
             {/* This element is to trick the browser into centering the modal contents. */}
@@ -104,7 +104,7 @@ const CollectionSortPosition: React.FC<{}> = () => {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6 relative">
+              <div className="inline-block align-bottom bg-white dark:bg-gray-800 dark:text-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6 relative">
                 <Dialog.Title as="h3" className="sr-only">
                   Selected Release
                 </Dialog.Title>

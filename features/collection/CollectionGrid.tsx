@@ -55,7 +55,7 @@ const CollectionGrid: React.FC = () => {
       <CollectionSortPosition />
       <div className={`grid gap-4 place-items-center ${cols}`}>
         {collection.releases.map((release, index) => (
-          <div key={release.id} className="text-center bg-gray-100 rounded-lg">
+          <div key={release.id}>
             <button
               type="button"
               onClick={() => setSelectedReleaseIndex(index)}
@@ -63,6 +63,7 @@ const CollectionGrid: React.FC = () => {
               <Image
                 src={release.basic_information.cover_image}
                 alt="album artwork"
+                className="rounded-lg"
                 width="500"
                 height="500"
               />

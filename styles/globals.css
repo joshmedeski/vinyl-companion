@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  input[type="range"] {
+    @apply w-full my-4 h-6 rounded-full;
+    -webkit-appearance: none !important;
+    background: #333;
+    height: 7px;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    @apply w-4 h-4 rounded-full shadow-sm;
+    -webkit-appearance: none !important;
+    background: white;
+  }
+}
