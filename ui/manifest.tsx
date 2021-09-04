@@ -4,6 +4,7 @@ import Head from "next/head";
 const Manifest: React.FC = () => {
   return (
     <Head>
+      <title>Vinyl Companion</title>
       {/** {/**-- Must */}
       <meta charSet="utf-8" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
