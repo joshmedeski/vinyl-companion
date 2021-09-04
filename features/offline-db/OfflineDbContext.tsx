@@ -1,14 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import { set as setToDb, get as getFromDb } from "idb-keyval";
+import { saveImgUrlToBlog } from "@vc/utils/image";
 
 type Context = {
   collection: CollectionTypes.ReleasesInstancesResponse | undefined;
   setCollection: (identity: CollectionTypes.ReleasesInstancesResponse) => void;
+  selectedReleaseIndex: number | undefined;
+  setSelectedReleaseIndex: (index: number | undefined) => void;
 };
 
 const OfflineDbContext = React.createContext<Context>({
   collection: undefined,
   setCollection: (_: CollectionTypes.ReleasesInstancesResponse) =>
+    console.warn("OfflineDBProvider not found"),
+  selectedReleaseIndex: undefined,
+  setSelectedReleaseIndex: (_: number | undefined) =>
     console.warn("OfflineDBProvider not found"),
 });
 
@@ -20,11 +26,19 @@ const OfflineDbProvider: React.FC = ({ children }) => {
     setCollection,
   ] = useState<CollectionTypes.ReleasesInstancesResponse>();
 
+  const [selectedReleaseIndex, setSelectedReleaseIndex] = useState<number>();
+
   const getCollectionFromDb = async (): Promise<void> => {
     const collection = await getFromDb<CollectionTypes.ReleasesInstancesResponse>(
       "collection"
     );
-    console.log("collection: ", collection);
+    if (collection?.releases.length) {
+      const blob = await saveImgUrlToBlog(
+        collection?.releases[0].basic_information.cover_image
+      );
+      console.log("blob: ", blob);
+    }
+
     if (collection) setCollection(collection);
   };
 
@@ -33,7 +47,8 @@ const OfflineDbProvider: React.FC = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    setToDb("collection", collection);
+    if (collection) setToDb("collection", collection);
+    // TODO get an image and show
   }, [collection]);
 
   // TODO store images for releases
@@ -44,6 +59,8 @@ const OfflineDbProvider: React.FC = ({ children }) => {
       value={{
         collection,
         setCollection,
+        selectedReleaseIndex,
+        setSelectedReleaseIndex,
       }}
     >
       {children}
