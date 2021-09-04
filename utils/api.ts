@@ -31,3 +31,8 @@ export const apiGetAccessToken = async (
   );
   return data;
 };
+
+export const apiGetIdentity = async (): Promise<DiscogsTypes.Identity> => {
+  const { data } = await api.get<DiscogsTypes.Identity>("/discogs/identity");
+  return data;
+};
