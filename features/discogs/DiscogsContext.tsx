@@ -1,16 +1,30 @@
 import React, { useContext, useEffect, useState } from "react";
 
-type Context = {};
+type Context = {
+  identity: DiscogsTypes.Identity | undefined;
+  setIdentity: (identity: DiscogsTypes.Identity) => void;
+};
 
-const DiscogsContext = React.createContext<Context>({});
+const DiscogsContext = React.createContext<Context>({
+  identity: undefined,
+  setIdentity: (_: DiscogsTypes.Identity) =>
+    console.warn("DiscogsProvider not found"),
+});
 
 const useDiscogs = () => useContext(DiscogsContext);
 
 const DiscogsProvider: React.FC = ({ children }) => {
-  // TODO store identity object
+  const [identity, setIdentity] = useState<DiscogsTypes.Identity>();
 
   return (
-    <DiscogsContext.Provider value={{}}>{children}</DiscogsContext.Provider>
+    <DiscogsContext.Provider
+      value={{
+        identity,
+        setIdentity,
+      }}
+    >
+      {children}
+    </DiscogsContext.Provider>
   );
 };
 

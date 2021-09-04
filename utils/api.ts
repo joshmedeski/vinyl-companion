@@ -1,5 +1,5 @@
 import axios from "axios";
-import { OAuth, OAuthCallbackAuth } from "disconnect";
+import { OAuthCallbackAuth } from "disconnect";
 
 const api = axios.create({ baseURL: `${process.env.NEXT_PUBLIC_APP_URL}/api` });
 
@@ -19,20 +19,15 @@ export const apiOauthRequestToken = async (): Promise<OAuthCallbackAuth> => {
   return data;
 };
 
-export const apiOauthAccessToken = async (
+export const apiGetAccessToken = async (
   oauth_token: string,
   oauth_verifier: string
-): Promise<OAuth> => {
-  // TODO properly check
-  const request_auth = JSON.parse(
-    localStorage.getItem("request_auth") as string
+): Promise<DiscogsTypes.Identity> => {
+  const { data } = await api.get<DiscogsTypes.Identity>(
+    "/discogs/access_token",
+    {
+      params: { oauth_token, oauth_verifier },
+    }
   );
-
-  const { data } = await api.get<OAuth>("/oauth/access_token", {
-    params: { request_auth, oauth_token, oauth_verifier },
-  });
-
-  localStorage.removeItem("request_auth");
-  localStorage.setItem("access_auth", JSON.stringify(data));
   return data;
 };
