@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Client, OAuthCallbackAuth } from "disconnect";
+import { NextApiRequestWithAuth, withApiAuth } from "@vc/utils/auth";
 
 export const getRequestToken = (): Promise<OAuthCallbackAuth> => {
   const {
@@ -24,16 +25,18 @@ export const getRequestToken = (): Promise<OAuthCallbackAuth> => {
 };
 
 const request_token_api_endpoint = async (
-  _: NextApiRequest,
+  req: NextApiRequestWithAuth,
   res: NextApiResponse<OAuthCallbackAuth | string>
 ) => {
   try {
-    const auth = await getRequestToken();
-    res.status(200).json(auth);
+    const request = await getRequestToken();
+    req.session.set("request", request);
+    await req.session.save();
+    res.status(200).json(request);
   } catch (e) {
     console.error(e);
     res.status(500).send("Failed to get request token");
   }
 };
 
-export default request_token_api_endpoint;
+export default withApiAuth(request_token_api_endpoint);

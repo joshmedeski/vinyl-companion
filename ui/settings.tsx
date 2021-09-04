@@ -13,6 +13,7 @@ import {
   InformationCircleIcon as SolidInformationCircleIcon,
 } from "@heroicons/react/solid";
 import Tabs from "./tabs";
+import DiscogsSettings from "@vc/features/discogs/DiscogsSettings";
 
 const Settings: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -22,7 +23,7 @@ const Settings: React.FC = () => {
   return (
     <>
       <button type="button" onClick={() => setOpen(true)}>
-        <AdjustmentsIcon className="w-12 h-12 text-primary" />
+        <AdjustmentsIcon className="w-12 h-12 bg-gray-800 text-white rounded-lg shadow-md" />
       </button>
 
       <Transition.Root show={open} as={Fragment}>
@@ -75,7 +76,7 @@ const Settings: React.FC = () => {
                         inactive: OutlineMusicNoteIcon,
                       },
                       content: function DiscogsTabContent() {
-                        return <h1>Discogs content</h1>;
+                        return <DiscogsSettings />;
                       },
                     },
                     {

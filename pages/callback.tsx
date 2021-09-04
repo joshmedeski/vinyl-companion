@@ -16,7 +16,7 @@ const CallbackPage: NextPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
-  return <div>Callback</div>;
+  return <div className="p-4">Connecting to Discogs</div>;
 };
 
 export const getServerSideProps: GetServerSideProps = withPageAuth(

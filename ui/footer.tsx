@@ -3,7 +3,7 @@ import Settings from "./settings";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="absolute bottom-0 left-0 text-blue-500 p-2">
+    <footer className="fixed bottom-0 left-0 text-blue-500 p-2">
       <Settings />
     </footer>
   );

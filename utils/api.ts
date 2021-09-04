@@ -15,8 +15,7 @@ export const apiGetImage = async (release: number): Promise<string> => {
 };
 
 export const apiOauthRequestToken = async (): Promise<OAuthCallbackAuth> => {
-  const { data } = await api.get<OAuthCallbackAuth>("/oauth/request_token");
-  localStorage.setItem("request_auth", JSON.stringify(data));
+  const { data } = await api.get<OAuthCallbackAuth>("/discogs/request_token");
   return data;
 };
 

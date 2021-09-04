@@ -3,7 +3,13 @@ module.exports = {
   purge: ["./**/*.tsx"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        discogs: {
+          DEFAULT: "#333333",
+        },
+      },
+    },
   },
   variants: {
     extend: {},
