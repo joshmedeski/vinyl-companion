@@ -14,6 +14,7 @@ import {
 } from "@heroicons/react/solid";
 import Tabs from "./tabs";
 import DiscogsSettings from "@vc/features/discogs/DiscogsSettings";
+import CollectionSettings from "@vc/features/collection/CollectionSettings";
 
 const Settings: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -86,7 +87,7 @@ const Settings: React.FC = () => {
                         inactive: OutlineDatabaseIcon,
                       },
                       content: function DatabaseTabContent() {
-                        return <h1>Database</h1>;
+                        return <CollectionSettings />;
                       },
                     },
                     {

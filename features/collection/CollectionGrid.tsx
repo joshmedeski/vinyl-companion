@@ -7,10 +7,13 @@ const CollectionGrid: React.FC = () => {
   if (!collection) return <p>No collection found.</p>;
 
   return (
-    <div className="max-w-screen-2xl mx-auto">
-      <div className="grid grid-cols-4">
+    <div className="max-w-screen-2xl mx-auto p-4">
+      <div className="grid grid-cols-4 gap-4 place-items-center">
         {collection.releases.map((release) => (
-          <div key={release.id} className="p-4 text-center bg-gray-100">
+          <div
+            key={release.id}
+            className="p-4 text-center bg-gray-100 rounded-lg"
+          >
             <h2 className="font-bold text-2xl">
               {release.basic_information.title}
             </h2>
