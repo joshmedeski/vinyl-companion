@@ -1,11 +1,21 @@
+import React from "react";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 
+import { OfflineDbProvider } from "@vc/features/offline-db/OfflineDbContext";
+import { DiscogsProvider } from "@vc/features/discogs/DiscogsContext";
+import Footer from "@vc/ui/footer";
+
 function VinylCompanionApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="flex flex-col min-h-screen justify-center align-center">
-      <Component {...pageProps} />
-    </div>
+    <OfflineDbProvider>
+      <DiscogsProvider>
+        <main className="min-h-screen">
+          <Component {...pageProps} />
+        </main>
+        <Footer />
+      </DiscogsProvider>
+    </OfflineDbProvider>
   );
 }
 export default VinylCompanionApp;
