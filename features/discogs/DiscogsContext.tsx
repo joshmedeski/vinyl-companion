@@ -34,10 +34,8 @@ const DiscogsProvider: React.FC = ({ children }) => {
   const getCollection = async (): Promise<void> => {
     try {
       const collection = await apiGetCollection();
-      console.log("collection: ", collection);
       setCollection(collection);
     } catch (e: any) {
-      console.log("get collection failed");
       console.error(e);
       return;
     }
