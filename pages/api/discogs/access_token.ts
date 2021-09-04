@@ -40,9 +40,11 @@ const access_token_api_endpoint = async (
 
     const access = await getAccessToken(request, oauth_verifier as string);
     req.session.set("access", access);
-    await req.session.save();
 
     const identity = await getIdentity(access);
+    req.session.set("identity", identity);
+    await req.session.save();
+
     res.status(200).json(identity);
   } catch (e) {
     console.error(e);

@@ -21,6 +21,8 @@ const get_identity_api_endpoint = async (
     const access = req.session.get<OAuthCallbackAuth>("access");
     if (!access) throw "No 'access' auth found in session";
     const identity = await getIdentity(access);
+    req.session.set("identity", identity);
+    await req.session.save();
     res.status(200).json(identity);
   } catch (e) {
     console.error(e);

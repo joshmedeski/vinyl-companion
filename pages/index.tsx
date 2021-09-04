@@ -1,11 +1,9 @@
-import type { GetServerSideProps, NextPage } from "next";
+import CollectionGrid from "@vc/features/collection/CollectionGrid";
+import type { NextPage } from "next";
+import React from "react";
 
 const HomePage: NextPage = () => {
-  return (
-    <div className="">
-      <h1>Home</h1>
-    </div>
-  );
+  return <CollectionGrid />;
 };
 
 export default HomePage;

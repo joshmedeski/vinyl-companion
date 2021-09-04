@@ -36,3 +36,10 @@ export const apiGetIdentity = async (): Promise<DiscogsTypes.Identity> => {
   const { data } = await api.get<DiscogsTypes.Identity>("/discogs/identity");
   return data;
 };
+
+export const apiGetCollection = async (): Promise<CollectionTypes.ReleasesInstancesResponse> => {
+  const { data } = await api.get<CollectionTypes.ReleasesInstancesResponse>(
+    "/discogs/collection"
+  );
+  return data;
+};

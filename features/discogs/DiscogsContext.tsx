@@ -1,5 +1,6 @@
-import { apiGetIdentity } from "@vc/utils/api";
+import { apiGetCollection, apiGetIdentity } from "@vc/utils/api";
 import React, { useContext, useEffect, useState } from "react";
+import { useOfflineDb } from "../offline-db/OfflineDbContext";
 
 type Context = {
   identity: DiscogsTypes.Identity | undefined;
@@ -15,8 +16,10 @@ const DiscogsContext = React.createContext<Context>({
 const useDiscogs = () => useContext(DiscogsContext);
 
 const DiscogsProvider: React.FC = ({ children }) => {
+  const { setCollection } = useOfflineDb();
   const [identity, setIdentity] = useState<DiscogsTypes.Identity>();
-  // TODO allow user to discconect manually
+
+  // TODO allow user to disconnect manually
 
   const checkIdentity = async (): Promise<void> => {
     try {
@@ -28,9 +31,26 @@ const DiscogsProvider: React.FC = ({ children }) => {
     }
   };
 
+  const getCollection = async (): Promise<void> => {
+    try {
+      const collection = await apiGetCollection();
+      console.log("collection: ", collection);
+      setCollection(collection);
+    } catch (e: any) {
+      console.log("get collection failed");
+      console.error(e);
+      return;
+    }
+  };
+
   useEffect(() => {
     checkIdentity();
   }, []);
+
+  useEffect(() => {
+    if (identity) getCollection();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [identity]);
 
   return (
     <DiscogsContext.Provider

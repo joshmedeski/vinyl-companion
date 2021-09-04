@@ -1,5 +1,4 @@
 import type { GetServerSideProps, NextPage } from "next";
-import { useEffect } from "react";
 import { Client } from "disconnect";
 
 const getCollection = (access: any) => {
