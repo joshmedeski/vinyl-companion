@@ -12,23 +12,50 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Features
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- [x] Connect to Discogs API
+- [x] Display vinyls (offline fist with IndexedDB)
+- [x] Show contextual sorting screen
+- [x] Set `<title>` tag
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Future Features
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [ ] Vinyl “shuffle” feature
+	- "I don’t know what to listen to, choose for me"
+- [ ] Download newly added Discogs vinyls into IndexedDB
+- [ ] List all my vinyls in a random order (ultimate shuffle)
+- [ ] Download all vinyls (repeat because of API limit)
+- [ ] Reset offline storage
+- [ ] Check for new vinyl on load
+- [ ] Put Discogs button on home page
+- [ ] Create pretty preview page
+- [ ] Increase range input button (for iPad mini)
+	- [ ] Or change to + / - buttons
+- [ ] Playlist feature
+- [ ] “What am I in the mood for” feature
+	- Pick music based off what I’m in the mood for (ex: “pop”)
+- [ ] Add more details to detailed album screen (on press)
+	- [ ] Separate screen (with back button)
+	- [ ] Show Vinyl inline (but bigger)
+	- [ ] Year
+	- [ ] Outsource links
+		- Lookup on Spotify (via Spotify link)
+		- Lookup on Wikipedia
+		- Lookup on MetaCritic
+	- [ ] Investigate more details
+- [ ] Show left to right OR top to bottom
+- [ ] Sort by
+	- [ ] A-Z or Z-A
+	- [ ] Recently added 
+- [ ] If less than a month old add “newly added” label
+- [ ] Group by purchases (month to month)
+- [ ] Add social media image when sharing #marketing
+- [ ] Allow people to share their own collection (via `/collections/{collection_id}`)
+- [ ] Auto-generate user-specific social share image (like Spotify's playlist titles)
+- [ ] Share custom vinyl collections (like a playlist)
+- [ ] Scan barcode to and show vinyl in app
+- [ ] Track what I've listened to
+		- [ ] Watch log (with quick add)
+		- [ ] Reset my watch state
+		- [ ] Track in external db (paid feature?)
