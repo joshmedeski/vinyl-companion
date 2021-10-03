@@ -6,14 +6,10 @@ import { OfflineDbProvider } from "@vc/features/offline-db/OfflineDbContext";
 import { DiscogsProvider } from "@vc/features/discogs/DiscogsContext";
 import Manifest from "@vc/ui/manifest";
 import Settings from "@vc/ui/settings";
-import Head from "next/head";
 
 function VinylCompanionApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Head>
-        <title>Vinyl Companion</title>
-      </Head>
       <OfflineDbProvider>
         <DiscogsProvider>
           <Manifest />

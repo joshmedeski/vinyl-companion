@@ -14,7 +14,7 @@ const Manifest: React.FC = () => {
       />
       <meta name="description" content="Description" />
       <meta name="keywords" content="Keywords" />
-      <title>Page Title</title>
+      <title>Vinyl Companion</title>
       {/**-- Android  -->*/}
       <meta name="theme-color" content="#10b981" />
       <meta name="mobile-web-app-capable" content="yes" />
