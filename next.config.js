@@ -1,7 +1,7 @@
 const withPWA = require("next-pwa");
 
 /** @type {import('next').NextConfig} */
-module.exports = withPWA({
+const settings = {
   reactStrictMode: true,
   images: {
     domains: ["img.discogs.com", "localhost"],
@@ -9,4 +9,7 @@ module.exports = withPWA({
   pwa: {
     dest: "public",
   },
-});
+};
+
+module.exports =
+  process.env.NODE_ENV === "development" ? settings : withPWA(settings);
