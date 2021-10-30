@@ -28,30 +28,22 @@ const OfflineDbProvider: React.FC = ({ children }) => {
 
   const [selectedReleaseIndex, setSelectedReleaseIndex] = useState<number>();
 
-  const getCollectionFromDb = async (): Promise<void> => {
+  const getAndSetCollectionFromDb = async (): Promise<void> => {
     const collection = await getFromDb<CollectionTypes.ReleasesInstancesResponse>(
       "collection"
     );
-    if (collection?.releases.length) {
-      const blob = await saveImgUrlToBlog(
-        collection?.releases[0].basic_information.cover_image
-      );
-      console.log("blob: ", blob);
-    }
 
     if (collection) setCollection(collection);
   };
 
   useEffect(() => {
-    getCollectionFromDb();
+    getAndSetCollectionFromDb();
   }, []);
 
   useEffect(() => {
     if (collection) setToDb("collection", collection);
-    // TODO get an image and show
   }, [collection]);
 
-  // TODO store images for releases
   // TODO way to wipe offline storage
 
   return (

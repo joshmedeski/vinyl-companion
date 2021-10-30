@@ -59,3 +59,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 		- [ ] Watch log (with quick add)
 		- [ ] Reset my watch state
 		- [ ] Track in external db (paid feature?)
+- [ ] Get the offline page working

@@ -43,6 +43,8 @@ const DiscogsProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     checkIdentity();
+    if (identity) getCollection();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
